@@ -55,7 +55,7 @@ class InnerTube(Client):
         if client_name is None:
             raise ValueError("Precondition failed: Missing client name")
 
-        kwargs: dict = utils.filter(
+        kwargs: dict = utils.removeNoneValues(
             dict(
                 client_name=client_name,
                 client_version=client_version,
@@ -107,7 +107,7 @@ class InnerTube(Client):
     ) -> dict:
         return self(
             Endpoint.BROWSE,
-            body=utils.filter(
+            body=utils.removeNoneValues(
                 dict(
                     browseId=browse_id,
                     params=params,
@@ -125,7 +125,7 @@ class InnerTube(Client):
     ) -> dict:
         return self(
             Endpoint.SEARCH,
-            body=utils.filter(
+            body=utils.removeNoneValues(
                 dict(
                     query=query or "",
                     params=params,
@@ -145,7 +145,7 @@ class InnerTube(Client):
     ) -> dict:
         return self(
             Endpoint.NEXT,
-            body=utils.filter(
+            body=utils.removeNoneValues(
                 dict(
                     params=params,
                     playlistId=playlist_id,
@@ -162,7 +162,7 @@ class InnerTube(Client):
     ) -> dict:
         return self(
             Endpoint.GET_TRANSCRIPT,
-            body=utils.filter(
+            body=utils.removeNoneValues(
                 dict(
                     params=params,
                 )
@@ -188,7 +188,7 @@ class InnerTube(Client):
     ) -> dict:
         return self(
             Endpoint.MUSIC_GET_QUEUE,
-            body=utils.filter(
+            body=utils.removeNoneValues(
                 dict(
                     playlistId=playlist_id,
                     videoIds=video_ids or (None,),

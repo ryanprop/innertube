@@ -6,7 +6,8 @@ K = TypeVar("K")
 V = TypeVar("V")
 
 
-def filter(dictionary: Dict[K, Optional[V]], /) -> Dict[K, V]:
+def removeNoneValues(dictionary: Dict[K, Optional[V]], /) -> Dict[K, V]:
+    """Removes None values from a dictionary."""
     return {key: value for key, value in dictionary.items() if value is not None}
 
 
