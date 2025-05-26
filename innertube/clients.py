@@ -195,3 +195,14 @@ class InnerTube(Client):
                 )
             ),
         )
+
+    def resolve_url(
+        self,
+        url: str,
+    ) -> dict:
+        return self(
+            Endpoint.RESOLVE_URL,
+            body=dict(
+                url=url,
+            ),
+        )
